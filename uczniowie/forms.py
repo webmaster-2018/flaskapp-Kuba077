@@ -4,14 +4,22 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, RadioField, HiddenField, FieldList
 from wtforms import SelectField, FormField, BooleanField
-from wtforms.validators import Required
+from wtforms.validators import DataRequired
 
 blad1 = 'To pole jest wymagane'
 
 
 class KlasaForm(FlaskForm):
-    pass
+    id = HiddenField()
+    nazwa = StringField('Nazwa dodawanej klasy: ', validators=[DataRequired(message=blad1)])
+    rok_naboru = StringField('Rok naboru: ', coerce=int)
+    rok_matury = StringField('Rok matury: ', coerce=int)
+
 
 
 class UczenForm(FlaskForm):
-    pass
+    id = HiddenField()
+    imie = StringField('Imię  dodawanego ucznia: ', validators=[DataRequired(message=blad1)])
+    nazwisko = StringField('Nazwisko ucznia: ', validators=[DataRequired(message=blad1)])
+    plec = BooleanField('Płeć ucznia: ', validators=[DataRequired(message=blad1)])
+    klasa = SelectField('Klasa', coerce=int)
