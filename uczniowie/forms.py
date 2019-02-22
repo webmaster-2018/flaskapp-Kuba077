@@ -25,6 +25,6 @@ class UczenForm(FlaskForm):
                        DataRequired(message=blad1)])
     nazwisko = StringField('Nazwisko ucznia: ', validators=[
                            DataRequired(message=blad1)])
-    plec = BooleanField('Płeć ucznia: ', validators=[
+    plec = SelectField('Płeć ucznia: ', validators=[
                         DataRequired(message=blad1)])
     klasa = SelectField('Klasa', coerce=int)
