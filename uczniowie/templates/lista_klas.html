@@ -5,7 +5,14 @@
 <ol>
     {% for k in klasy %}
         <li>
-            {{ k.nazwa }}
+            Nazwa klasy: {{ k.nazwa }}<br>
+            Rok naboru: {{ k.rok_naboru }} <br>
+            Rok matury: {{ k.rok_matury }}  <br>
+
+            <a href="{{ url_for('edytuj_klase', k_id=k.id) }}">
+              <button class="btn btn-info">Edytuj</button>
+            </a>
+
         </li>
     {% endfor %}
 </ol>
