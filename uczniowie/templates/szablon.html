@@ -32,13 +32,16 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ url_for('lista_klas') }}">lista klas</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('lista_klas') }}">Lista klas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ url_for('dodaj_klase') }}">dodaj klase</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('dodaj_klase') }}">Dodaj klasę</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('dodaj_ucznia') }}">Dodaj ucznia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ url_for('lista_uczniow') }}">Lista uczniów</a>
                     </li>
                 </ul>
             </div>

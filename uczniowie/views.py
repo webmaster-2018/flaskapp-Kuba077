@@ -54,6 +54,12 @@ def edytuj_klase(k_id):
     return render_template('edytuj_klase.html', form=form, klasa=klasa)
 
 
+@app.route('/lista_uczniow')
+def lista_uczniow():
+    uczniowie = Uczen.select().order_by(Uczen.klasa, Uczen.nazwisko, Uczen.imie)
+    return render_template('lista_uczniow.html', uczniowie=uczniowie)
+
+
 @app.route("/dodaj_ucznia", methods=['GET', 'POST'])
 def dodaj_ucznia():
     form = UczenForm()
@@ -61,9 +67,10 @@ def dodaj_ucznia():
     form.klasa.choices = [(klasa.id, klasa.nazwa) for klasa in Klasa.select()]
 
     if form.validate_on_submit():
+        print("aaaa")
         klasa = get_object_or_404(Klasa, Klasa.id == form.klasa.data)
         Uczen(imie=form.imie.data, nazwisko=form.nazwisko.data,
               plec=form.plec.data, klasa=klasa.id).save()
-        # return redirect(url_for('lista_uczniow'))
+        return redirect(url_for('lista_uczniow'))
 
     return render_template('dodaj_ucznia.html', form=form)

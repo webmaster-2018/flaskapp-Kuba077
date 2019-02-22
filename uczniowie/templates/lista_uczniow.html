@@ -1,0 +1,24 @@
+{% extends "szablon.html" %}
+{% block tytul %}Lista uczniów: {% endblock %}
+{% block h1 %}Uczniowie: {% endblock %}
+{% block tresc %}
+<ol>
+  <li>
+    {% for u in uczniowie %}
+      Imię: {{u.imie}} 
+      <br>
+      Nazwisko : {{ u.nazwisko }} 
+      <br>
+      Płeć:
+      {% if u.plec == 1 %}
+        mężczyzna
+      {% else%} 
+        kobieta
+      {% endif %} 
+      <br>
+      Klasa: {{u.klasa.nazwa}}
+      <br>
+    {% endfor %}
+  </li>
+</ol>
+{% endblock %}
