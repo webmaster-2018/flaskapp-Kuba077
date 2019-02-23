@@ -15,6 +15,11 @@ app = Flask(__name__)
 plec = [(0, 'kobieta'), (1, 'mężczyzna')]
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 @app.route('/')
 def index():
     """Strona główna"""

@@ -1,0 +1,15 @@
+{% extends "szablon.html" %}
+{% block tytul %}404 Nie Znaleziono{% endblock %}
+{% block h1 %}404 Nie Znaleziono{% endblock %}
+{% block lead %}Strona o podanym adresie nie istnieje{% endblock %}
+{% block tresc%}
+
+<b>Przejdź do strony głównej:</b>
+<br>
+<a href="{{ url_for('index') }}">
+  <button class="btn btn-info">
+    Strona główna
+  </button>
+</a>
+
+{% endblock %}
