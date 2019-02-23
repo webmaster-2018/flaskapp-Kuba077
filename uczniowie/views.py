@@ -33,7 +33,10 @@ def dodaj_klase():
     if form.validate_on_submit():
         Klasa(nazwa=form.nazwa.data, rok_naboru=form.rok_naboru.data,
               rok_matury=form.rok_matury.data).save()
+        flash("Klasa dodana", 'alert alert-success')
         return redirect(url_for('index'))
+    elif request.method == 'POST':
+        flash("Nie uzupełniono wymaganych pól", 'alert alert-danger')
 
     return render_template('dodaj_klase.html', form=form)
 
@@ -55,8 +58,10 @@ def edytuj_klase(k_id):
         klasa.rok_naboru = form.rok_naboru.data
         klasa.rok_matury = form.rok_matury.data
         klasa.save()
-
+        flash("Edycja klasy zapisana", 'alert alert-success')
         return redirect(url_for('lista_klas'))
+    elif request.method == 'POST':
+        flash("Nie uzupełniono wymaganych pól", 'alert alert-danger')
 
     return render_template('edytuj_klase.html', form=form, klasa=klasa)
 
@@ -77,7 +82,10 @@ def dodaj_ucznia():
         klasa = get_object_or_404(Klasa, Klasa.id == form.klasa.data)
         Uczen(imie=form.imie.data, nazwisko=form.nazwisko.data,
               plec=form.plec.data, klasa=klasa.id).save()
+        flash("Uczen dodany", 'alert alert-success')
         return redirect(url_for('lista_uczniow'))
+    elif request.method == 'POST':
+        flash("Nie uzupełniono wymaganych pól", 'alert alert-danger')
 
     return render_template('dodaj_ucznia.html', form=form)
 
@@ -98,6 +106,8 @@ def edytuj_ucznia(u_id):
         uczen.plec = form.plec.data
         uczen.klasa = klasa.id
         uczen.save()
+        flash("Edycja ucznia zapisana", 'alert alert-success')
         return redirect(url_for('lista_uczniow'))
-
+    elif request.method == 'POST':
+        flash("Nie uzupełniono wymaganych pól", 'alert alert-danger')
     return render_template('edytuj_ucznia.html', form=form, uczen=uczen)
