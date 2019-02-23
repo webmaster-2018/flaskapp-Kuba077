@@ -3,8 +3,8 @@
 {% block h1 %}Uczniowie: {% endblock %}
 {% block tresc %}
 <ol>
-  <li>
-    {% for u in uczniowie %}
+  {% for u in uczniowie %}
+    <li>
       Imię: {{u.imie}} 
       <br>
       Nazwisko : {{ u.nazwisko }} 
@@ -18,7 +18,10 @@
       <br>
       Klasa: {{u.klasa.nazwa}}
       <br>
-    {% endfor %}
-  </li>
+      <a href="{{ url_for('edytuj_ucznia', u_id=u.id) }}">
+        <button class="btn btn-info">Edytuj</button>
+      </a>
+    </li>
+  {% endfor %}
 </ol>
 {% endblock %}
