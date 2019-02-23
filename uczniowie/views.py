@@ -34,7 +34,7 @@ def dodaj_klase():
         Klasa(nazwa=form.nazwa.data, rok_naboru=form.rok_naboru.data,
               rok_matury=form.rok_matury.data).save()
         flash("Klasa dodana", 'alert alert-success')
-        return redirect(url_for('index'))
+        return redirect(url_for('lista_klas'))
     elif request.method == 'POST':
         flash("Nie uzupełniono wymaganych pól", 'alert alert-danger')
 
@@ -64,6 +64,14 @@ def edytuj_klase(k_id):
         flash("Nie uzupełniono wymaganych pól", 'alert alert-danger')
 
     return render_template('edytuj_klase.html', form=form, klasa=klasa)
+
+
+@app.route('/usun_klase/<int:k_id>')
+def usun_klase(k_id):
+    klasa = get_object_or_404(Klasa, Klasa.id == k_id)
+    klasa.delete_instance()
+    flash("Klasa usunięta", 'alert alert-success')
+    return redirect(url_for('lista_klas'))
 
 
 @app.route('/lista_uczniow')
@@ -111,3 +119,11 @@ def edytuj_ucznia(u_id):
     elif request.method == 'POST':
         flash("Nie uzupełniono wymaganych pól", 'alert alert-danger')
     return render_template('edytuj_ucznia.html', form=form, uczen=uczen)
+
+
+@app.route('/usun_ucznia/<int:u_id>')
+def usun_ucznia(u_id):
+    uczen = get_object_or_404(Uczen, Uczen.id == u_id)
+    uczen.delete_instance()
+    flash("Uczeń usunięty", 'alert alert-success')
+    return redirect(url_for('lista_uczniow'))

@@ -21,6 +21,10 @@
       <a href="{{ url_for('edytuj_ucznia', u_id=u.id) }}">
         <button class="btn btn-info">Edytuj</button>
       </a>
+      <a href="{{ url_for('usun_ucznia', u_id=u.id) }}">
+        <button class="btn btn-danger">Usuń</button>
+      </a>
+
     </li>
   {% endfor %}
 </ol>

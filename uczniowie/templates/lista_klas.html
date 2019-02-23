@@ -12,6 +12,9 @@
             <a href="{{ url_for('edytuj_klase', k_id=k.id) }}">
               <button class="btn btn-info">Edytuj</button>
             </a>
+            <a href="{{ url_for('usun_klase', k_id=k.id) }}">
+              <button class="btn btn-danger">Usuń</button>
+            </a>
 
         </li>
     {% endfor %}
